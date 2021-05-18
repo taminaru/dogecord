@@ -92,7 +92,7 @@ Requires Node 12+ and Discord.js v12.
 `yarn add sequelize`
 
 *mongoose (recommended)*  
-`yarn add *mongoose`
+`yarn add mongoose`
 
 ## Links
 
