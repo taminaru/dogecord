@@ -6,7 +6,7 @@ _helpful to refer to them later._
 
 ## DogeCord Var's changes and file
 
-// client
+> client
 
 DogeCord > Akairo
 
@@ -16,7 +16,7 @@ DogeCordOptions > [AkairoOptions](https://github.com/taminaru/dogecord/blob/stab
 
 DogeCordError > [AkairoError](https://github.com/taminaru/dogecord/blob/stable/src/util/DogeCordError.js)
 
-// handlers
+> handlers
 
 DogeCordHandler > [AkairoHandler](https://github.com/taminaru/dogecord/blob/stable/src/struct/DogeCordHandler.js)
 
@@ -26,7 +26,7 @@ DogeCordHandlerOptions > [AkairoHandlerOptions](https://github.com/taminaru/doge
 
 DogeCordHandler#load > [AkairoHandler#load](https://github.com/taminaru/dogecord/blob/stable/src/struct/DogeCordHandler.js)
 
-// modules
+> modules
 
 DogeCordModuleOptions > [AkairoModuleOptions](https://github.com/taminaru/dogecord/blob/stable/src/index.d.ts)
 
