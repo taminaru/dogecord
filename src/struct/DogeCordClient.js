@@ -14,11 +14,19 @@ class DogeCordClient extends Client {
 
     const { ownerID = "" } = options;
 
+    const { superUserID = '' } = options;
+
     /**
      * The ID of the owner(s).
      * @type {Snowflake|Snowflake[]}
      */
     this.ownerID = ownerID;
+
+     /**
+         * The ID of the superUser(s).
+         * @type {Snowflake|Snowflake[]}
+         */
+      this.superUserID = superUserID;
 
     /**
      * Utility methods.
@@ -38,6 +46,18 @@ class DogeCordClient extends Client {
       ? this.ownerID.includes(id)
       : id === this.ownerID;
   }
+
+  /**
+     * Checks if a user is the owner of this bot.
+     * @param {UserResolvable} user - User to check.
+     * @returns {boolean}
+     */
+   isSuperUser(user) {
+    const id = this.users.resolveID(user);
+    return Array.isArray(this.superUserID)
+        ? this.superUserID.includes(id)
+        : id === this.superUserID;
+}
 }
 
 module.exports = DogeCordClient;
@@ -46,4 +66,10 @@ module.exports = DogeCordClient;
  * Options for the client.
  * @typedef {Object} DogeCordOptions
  * @prop {Snowflake|Snowflake[]} [ownerID=''] - Discord ID of the client owner(s).
+ */
+
+/**
+ * Options for the client.
+ * @typedef {Object} DogeCordOptions
+ * @prop {Snowflake|Snowflake[]} [superUserID=''] - Discord ID of the client superUsers(s).
  */
