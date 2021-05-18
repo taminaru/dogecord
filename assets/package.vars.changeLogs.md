@@ -33,3 +33,7 @@ DogeCordModuleOptions > [AkairoModuleOptions](https://github.com/taminaru/dogeco
 DogeCordHandler#remove > [AkairoHandler#remove](https://github.com/taminaru/dogecord/blob/stable/src/struct/AkairoHandler.js)
 
 DogeCordModule > [AkairoModule](https://github.com/taminaru/dogecord/blob/stable/src/struct/AkairoModule.js)
+
+## Notes
+
+If the var is not mentioned here then it most likely has not been changed.
