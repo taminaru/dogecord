@@ -21,6 +21,7 @@ class Command extends DogeCordModule {
             separator,
             channel = null,
             ownerOnly = false,
+            superUserOnly = false,
             editable = true,
             typing = false,
             cooldown = null,
