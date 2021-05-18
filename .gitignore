@@ -1,8 +1,11 @@
+# others
 node_modules
-
 .git
 .vscode
+.vs
 
-test/auth.json
+
+# Test folder
+test/config.js
 test/db.sqlite
-config.js
+test/yarn.lock
