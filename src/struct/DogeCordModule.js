@@ -30,8 +30,8 @@ class DogeCordModule {
         this.filepath = null;
 
         /**
-         * The Akairo client.
-         * @type {AkairoClient}
+         * The Doge client.
+         * @type {DogeCordClient}
          */
         this.client = null;
 
