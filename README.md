@@ -23,6 +23,8 @@ The fork is built to extention the usability of the [Taminaru Discord](https://g
 
 If you have any questions join our support server [here](https://discord.com/invite/NbqBQbaejS)
 
+**Better docs coming soon!**
+
 ## Features
 
 #### Completely modular commands, inhibitors, and listeners.
@@ -82,7 +84,9 @@ If you have any questions join our support server [here](https://discord.com/inv
 Requires Node 12+ and Discord.js v12.  
 
 *discord-akairo*  
-`yarn add https://github.com/taminaru/dogecord.git`
+`yarn add https://github.com/taminaru/dogecord`
+
+Until the package is on npm, for now you must uninstall and reinstall it to get the lastest updates.
 
 *discord.js*  
 `yarn add discord.js`
