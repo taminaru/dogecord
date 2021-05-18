@@ -82,7 +82,7 @@ If you have any questions join our support server [here](https://discord.com/inv
 Requires Node 12+ and Discord.js v12.  
 
 *discord-akairo*  
-`yarn add discord-akairo`
+`yarn add https://github.com/taminaru/dogecord.git`
 
 *discord.js*  
 `yarn add discord.js`
