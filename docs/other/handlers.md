@@ -2,14 +2,14 @@
 
 ### And Custom Modules
 
-Internally, Akairo's handlers all extends AkairoHandler, and all modules extends AkairoModule.  
+Internally, Akairo's handlers all extends DogeCordHandler, and all modules extends DogeCordModule.  
 So, you can create your own handlers and module types!  
 Create a new class for your module.  
 
 ```js
-const { AkairoModule } = require('discord-akairo');
+const { DogeCordModule } = require('discord-akairo');
 
-class CustomModule extends AkairoModule {
+class CustomModule extends DogeCordModule {
     constructor(id, options = {}) {
         super(id, options);
 
@@ -24,17 +24,17 @@ class CustomModule extends AkairoModule {
 module.exports = CustomModule;
 ```
 
-Note that the `exec` method you see in Command, Inhibitor, and Listener are not native to AkairoModule.  
+Note that the `exec` method you see in Command, Inhibitor, and Listener are not native to DogeCordModule.  
 They require you to actually create them within the module type, such as above.  
 We throw an error there just in case you forget to implement it.  
 
 Then, create a new class for your handler:  
 
 ```js
-const { AkairoHandler } = require('discord-akairo');
+const { DogeCordHandler } = require('discord-akairo');
 const CustomModule = require('./CustomModule');
 
-class CustomHandler extends AkairoHandler {
+class CustomHandler extends DogeCordHandler {
     constructor(client, options = {}) {
         super(client, {
             directory: options.directory,
@@ -52,10 +52,10 @@ For the handler, the `super()` takes the client, the directory for the handler, 
 Now we can add it to our client if we so desire:  
 
 ```js
-const { AkairoClient } = require('discord-akairo');
+const { DogeCordClient } = require('discord-akairo');
 const CustomHandler = require('./CustomHandler');
 
-class MyClient extends AkairoClient {
+class MyClient extends DogeCordClient {
     constructor() {
         super({
             ownerID: '123992700587343872',

@@ -1,5 +1,5 @@
-const AkairoError = require('../../util/DogeCordError');
-const AkairoModule = require('../DogeCordModule');
+const DogeCordError = require('../../util/DogeCordError');
+const DogeCordModule = require('../DogeCordModule');
 const Argument = require('./arguments/Argument');
 const ArgumentRunner = require('./arguments/ArgumentRunner');
 const ContentParser = require('./ContentParser');
@@ -8,9 +8,9 @@ const ContentParser = require('./ContentParser');
  * Represents a command.
  * @param {string} id - Command ID.
  * @param {CommandOptions} [options={}] - Options for the command.
- * @extends {AkairoModule}
+ * @extends {DogeCordModule}
  */
-class Command extends AkairoModule {
+class Command extends DogeCordModule {
     constructor(id, options = {}) {
         super(id, { category: options.category });
 
@@ -205,7 +205,7 @@ class Command extends AkairoModule {
      * @returns {any}
      */
     exec() {
-        throw new AkairoError('NOT_IMPLEMENTED', this.constructor.name, 'exec');
+        throw new DogeCordError('NOT_IMPLEMENTED', this.constructor.name, 'exec');
     }
 
     /**
@@ -238,8 +238,8 @@ module.exports = Command;
 
 /**
  * Options to use for command execution behavior.
- * Also includes properties from AkairoModuleOptions.
- * @typedef {AkairoModuleOptions} CommandOptions
+ * Also includes properties from DogeCordModuleOptions.
+ * @typedef {DogeCordModuleOptions} CommandOptions
  * @prop {string[]} [aliases=[]] - Command names.
  * @prop {ArgumentOptions[]|ArgumentGenerator} [args=[]] - Argument options or generator.
  * @prop {boolean} [quoted=true] - Whether or not to consider quotes.

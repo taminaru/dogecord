@@ -1,15 +1,15 @@
-const AkairoError = require('../../util/DogeCordError');
-const AkairoHandler = require('../DogeCordHandler');
+const DogeCordError = require('../../util/DogeCordError');
+const DogeCordHandler = require('../DogeCordHandler');
 const Inhibitor = require('./Inhibitor');
 const { isPromise } = require('../../util/Util');
 
 /**
  * Loads inhibitors and checks messages.
- * @param {AkairoClient} client - The Akairo client.
- * @param {AkairoHandlerOptions} options - Options.
- * @extends {AkairoHandler}
+ * @param {DogeCordClient} client - The Akairo client.
+ * @param {DogeCordHandlerOptions} options - Options.
+ * @extends {DogeCordHandler}
  */
-class InhibitorHandler extends AkairoHandler {
+class InhibitorHandler extends DogeCordHandler {
     constructor(client, {
         directory,
         classToHandle = Inhibitor,
@@ -18,7 +18,7 @@ class InhibitorHandler extends AkairoHandler {
         loadFilter
     } = {}) {
         if (!(classToHandle.prototype instanceof Inhibitor || classToHandle === Inhibitor)) {
-            throw new AkairoError('INVALID_CLASS_TO_HANDLE', classToHandle.name, Inhibitor.name);
+            throw new DogeCordError('INVALID_CLASS_TO_HANDLE', classToHandle.name, Inhibitor.name);
         }
 
         super(client, {

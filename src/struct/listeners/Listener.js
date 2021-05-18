@@ -1,13 +1,13 @@
-const AkairoError = require('../../util/DogeCordError');
-const AkairoModule = require('../DogeCordModule');
+const DogeCordError = require('../../util/DogeCordError');
+const DogeCordModule = require('../DogeCordModule');
 
 /**
  * Represents a listener.
  * @param {string} id - Listener ID.
  * @param {ListenerOptions} [options={}] - Options for the listener.
- * @extends {AkairoModule}
+ * @extends {DogeCordModule}
  */
-class Listener extends AkairoModule {
+class Listener extends DogeCordModule {
     constructor(id, {
         category,
         emitter,
@@ -54,7 +54,7 @@ class Listener extends AkairoModule {
      * @returns {any}
      */
     exec() {
-        throw new AkairoError('NOT_IMPLEMENTED', this.constructor.name, 'exec');
+        throw new DogeCordError('NOT_IMPLEMENTED', this.constructor.name, 'exec');
     }
 
     /**
@@ -76,8 +76,8 @@ module.exports = Listener;
 
 /**
  * Options to use for listener execution behavior.
- * Also includes properties from AkairoModuleOptions.
- * @typedef {AkairoModuleOptions} ListenerOptions
+ * Also includes properties from DogeCordModuleOptions.
+ * @typedef {DogeCordModuleOptions} ListenerOptions
  * @prop {string|EventEmitter} emitter - The event emitter, either a key from `ListenerHandler#emitters` or an EventEmitter.
  * @prop {string} event - Event name to listen to.
  * @prop {string} [type='on'] - Type of listener, either 'on' or 'once'.

@@ -1,9 +1,9 @@
 /**
  * Base class for a module.
  * @param {string} id - ID of module.
- * @param {AkairoModuleOptions} [options={}] - Options.
+ * @param {DogeCordModuleOptions} [options={}] - Options.
  */
-class AkairoModule {
+class DogeCordModule {
     constructor(id, { category = 'default' } = {}) {
         /**
          * ID of the module.
@@ -37,14 +37,14 @@ class AkairoModule {
 
         /**
          * The handler.
-         * @type {AkairoHandler}
+         * @type {DogeCordHandler}
          */
         this.handler = null;
     }
 
     /**
      * Reloads the module.
-     * @returns {AkairoModule}
+     * @returns {DogeCordModule}
      */
     reload() {
         return this.handler.reload(this.id);
@@ -52,7 +52,7 @@ class AkairoModule {
 
     /**
      * Removes the module.
-     * @returns {AkairoModule}
+     * @returns {DogeCordModule}
      */
     remove() {
         return this.handler.remove(this.id);
@@ -67,10 +67,10 @@ class AkairoModule {
     }
 }
 
-module.exports = AkairoModule;
+module.exports = DogeCordModule;
 
 /**
  * Options for module.
- * @typedef {Object} AkairoModuleOptions
+ * @typedef {Object} DogeCordModuleOptions
  * @prop {string} [category='default'] - Category ID for organization purposes.
  */

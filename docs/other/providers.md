@@ -12,9 +12,9 @@ First, create a new SQLiteProvider or SequelizeProvider.
 const sqlite = require('sqlite');
 const sequelize = require('sequelize');
 
-const { AkairoClient, SQLiteProvider, SequelizeProvider } = require('discord-akairo');
+const { DogeCordClient, SQLiteProvider, SequelizeProvider } = require('discord-akairo');
 
-class CustomClient extends AkairoClient {
+class CustomClient extends DogeCordClient {
     constructor() {
         super({
             /* Options here */
@@ -50,7 +50,7 @@ Before you can actually use the provider, you would have to run the `init` metho
 For example:  
 
 ```js
-class CustomClient extends AkairoClient {
+class CustomClient extends DogeCordClient {
     /* ... */
     async login(token) {
         await this.settings.init()
@@ -62,7 +62,7 @@ class CustomClient extends AkairoClient {
 Now, the provider can be used like so:  
 
 ```js
-class CustomClient extends AkairoClient {
+class CustomClient extends DogeCordClient {
     constructor() {
         super({
             prefix: message => {

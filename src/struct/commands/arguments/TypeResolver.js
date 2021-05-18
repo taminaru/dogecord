@@ -11,7 +11,7 @@ class TypeResolver {
     constructor(handler) {
         /**
          * The Akairo client.
-         * @type {AkairoClient}
+         * @type {DogeCordClient}
          */
         this.client = handler.client;
 

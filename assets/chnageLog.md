@@ -28,11 +28,12 @@ DogeCordHandler#load > [AkairoHandler#load](https://github.com/taminaru/dogecord
 
 > modules
 
+DogeCordModule > [AkairoModule](https://github.com/taminaru/dogecord/blob/stable/src/struct/DogeCordModule.js)
+
 DogeCordModuleOptions > [AkairoModuleOptions](https://github.com/taminaru/dogecord/blob/stable/src/index.d.ts)
 
 DogeCordHandler#remove > [AkairoHandler#remove](https://github.com/taminaru/dogecord/blob/stable/src/struct/DogeCordHandler.js)
 
-DogeCordModule > [AkairoModule](https://github.com/taminaru/dogecord/blob/stable/src/struct/DogeCordModule.js)
 
 ## Notes
 

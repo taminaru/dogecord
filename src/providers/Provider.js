@@ -1,4 +1,4 @@
-const AkairoError = require('../util/DogeCordError');
+const DogeCordError = require('../util/DogeCordError');
 const { Collection } = require('discord.js');
 
 /**
@@ -20,7 +20,7 @@ class Provider {
      * @returns {any}
      */
     init() {
-        throw new AkairoError('NOT_IMPLEMENTED', this.constructor.name, 'init');
+        throw new DogeCordError('NOT_IMPLEMENTED', this.constructor.name, 'init');
     }
 
     /**
@@ -32,7 +32,7 @@ class Provider {
      * @returns {any}
      */
     get() {
-        throw new AkairoError('NOT_IMPLEMENTED', this.constructor.name, 'get');
+        throw new DogeCordError('NOT_IMPLEMENTED', this.constructor.name, 'get');
     }
 
     /**
@@ -44,7 +44,7 @@ class Provider {
      * @returns {any}
      */
     set() {
-        throw new AkairoError('NOT_IMPLEMENTED', this.constructor.name, 'set');
+        throw new DogeCordError('NOT_IMPLEMENTED', this.constructor.name, 'set');
     }
 
     /**
@@ -55,7 +55,7 @@ class Provider {
      * @returns {any}
      */
     delete() {
-        throw new AkairoError('NOT_IMPLEMENTED', this.constructor.name, 'delete');
+        throw new DogeCordError('NOT_IMPLEMENTED', this.constructor.name, 'delete');
     }
 
     /**
@@ -65,7 +65,7 @@ class Provider {
      * @returns {any}
      */
     clear() {
-        throw new AkairoError('NOT_IMPLEMENTED', this.constructor.name, 'clear');
+        throw new DogeCordError('NOT_IMPLEMENTED', this.constructor.name, 'clear');
     }
 }
 

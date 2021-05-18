@@ -63,10 +63,10 @@ module.exports = ReloadCommand;
 Ways you can reload a module includes:  
 
 - Individually:
-    - `<AkairoHandler>.reload(moduleID)`
-    - `<AkairoModule>.reload()`
+    - `<DogeCordHandler>.reload(moduleID)`
+    - `<DogeCordModule>.reload()`
 - Many at once:
-    - `<AkairoHandler>.reloadAll()`
+    - `<DogeCordHandler>.reloadAll()`
     - `<Category>.reloadAll()`
 
 ### Removing and Adding

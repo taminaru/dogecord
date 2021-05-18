@@ -17,12 +17,12 @@ declare module 'discord-akairo' {
         }
     }
 
-    export class AkairoError extends Error {
+    export class DogeCordError extends Error {
         public code: string;
     }
 
-    export class AkairoClient extends Client {
-        public constructor(options?: AkairoOptions & ClientOptions, clientOptions?: ClientOptions);
+    export class DogeCordClient extends Client {
+        public constructor(options?: DogeCordOptions & ClientOptions, clientOptions?: ClientOptions);
 
         public ownerID: Snowflake | Snowflake[];
         public util: ClientUtil;
@@ -30,41 +30,41 @@ declare module 'discord-akairo' {
         public isOwner(user: UserResolvable): boolean;
     }
 
-    export class AkairoHandler extends EventEmitter {
-        public constructor(client: AkairoClient, options: AkairoHandlerOptions);
+    export class DogeCordHandler extends EventEmitter {
+        public constructor(client: DogeCordClient, options: DogeCordHandlerOptions);
 
         public automateCategories: boolean;
         public extensions: Set<string>;
-        public categories: Collection<string, Category<string, AkairoModule>>;
+        public categories: Collection<string, Category<string, DogeCordModule>>;
         public classToHandle: Function;
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public directory: string;
         public loadFilter: LoadPredicate;
-        public modules: Collection<string, AkairoModule>;
+        public modules: Collection<string, DogeCordModule>;
 
-        public deregister(mod: AkairoModule): void;
-        public findCategory(name: string): Category<string, AkairoModule>;
-        public load(thing: string | Function, isReload?: boolean): AkairoModule;
+        public deregister(mod: DogeCordModule): void;
+        public findCategory(name: string): Category<string, DogeCordModule>;
+        public load(thing: string | Function, isReload?: boolean): DogeCordModule;
         public loadAll(directory?: string, filter?: LoadPredicate): this;
-        public register(mod: AkairoModule, filepath?: string): void;
-        public reload(id: string): AkairoModule;
+        public register(mod: DogeCordModule, filepath?: string): void;
+        public reload(id: string): DogeCordModule;
         public reloadAll(): this;
-        public remove(id: string): AkairoModule;
+        public remove(id: string): DogeCordModule;
         public removeAll(): this;
-        public on(event: 'remove', listener: (mod: AkairoModule) => any): this;
-        public on(event: 'load', listener: (mod: AkairoModule, isReload: boolean) => any): this;
+        public on(event: 'remove', listener: (mod: DogeCordModule) => any): this;
+        public on(event: 'load', listener: (mod: DogeCordModule, isReload: boolean) => any): this;
 
         public static readdirRecursive(directory: string): string[];
     }
 
-    export class AkairoModule {
-        public constructor(id: string, options?: AkairoModuleOptions);
+    export class DogeCordModule {
+        public constructor(id: string, options?: DogeCordModuleOptions);
 
-        public category: Category<string, AkairoModule>;
+        public category: Category<string, DogeCordModule>;
         public categoryID: string;
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public filepath: string;
-        public handler: AkairoHandler;
+        public handler: DogeCordHandler;
         public id: string;
 
         public reload(): this;
@@ -74,7 +74,7 @@ declare module 'discord-akairo' {
     export class Argument {
         public constructor(command: Command, options: ArgumentOptions);
 
-        public readonly client: AkairoClient;
+        public readonly client: DogeCordClient;
         public command: Command;
         public default: DefaultValueSupplier | any;
         public description: string | any;
@@ -118,9 +118,9 @@ declare module 'discord-akairo' {
     }
 
     export class ClientUtil {
-        public constructor(client: AkairoClient);
+        public constructor(client: DogeCordClient);
 
-        public readonly client: AkairoClient;
+        public readonly client: DogeCordClient;
 
         public attachment(file: BufferResolvable | Stream, name?: string): MessageAttachment;
         public checkChannel(text: string, channel: Channel, caseSensitive?: boolean, wholeWord?: boolean): boolean;
@@ -148,7 +148,7 @@ declare module 'discord-akairo' {
         public resolveUsers(text: string, users: Collection<Snowflake, User>, caseSensitive?: boolean, wholeWord?: boolean): Collection<Snowflake, User>;
     }
 
-    export class Command extends AkairoModule {
+    export class Command extends DogeCordModule {
         public constructor(id: string, options?: CommandOptions);
 
         public aliases: string[];
@@ -156,7 +156,7 @@ declare module 'discord-akairo' {
         public quoted: boolean;
         public category: Category<string, Command>;
         public channel?: string;
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public clientPermissions: PermissionResolvable | PermissionResolvable[] | MissingPermissionSupplier;
         public cooldown?: number;
         public description: string | any;
@@ -183,8 +183,8 @@ declare module 'discord-akairo' {
         public remove(): this;
     }
 
-    export class CommandHandler extends AkairoHandler {
-        public constructor(client: AkairoClient, options: CommandHandlerOptions);
+    export class CommandHandler extends DogeCordHandler {
+        public constructor(client: DogeCordClient, options: CommandHandlerOptions);
 
         public aliasReplacement?: RegExp;
         public aliases: Collection<string, string>;
@@ -194,7 +194,7 @@ declare module 'discord-akairo' {
         public blockClient: boolean;
         public categories: Collection<string, Category<string, Command>>;
         public classToHandle: typeof Command;
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public commandUtil: boolean;
         public commandUtilLifetime: number;
         public commandUtils: Collection<string, CommandUtil>;
@@ -314,11 +314,11 @@ declare module 'discord-akairo' {
         public static is(value: any, type: string): value is Flag;
     }
 
-    export class Inhibitor extends AkairoModule {
+    export class Inhibitor extends DogeCordModule {
         public constructor(id: string, options?: InhibitorOptions);
 
         public category: Category<string, Inhibitor>;
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public filepath: string;
         public handler: InhibitorHandler;
         public id: string;
@@ -330,12 +330,12 @@ declare module 'discord-akairo' {
         public remove(): this;
     }
 
-    export class InhibitorHandler extends AkairoHandler {
-        public constructor(client: AkairoClient, options: AkairoHandlerOptions);
+    export class InhibitorHandler extends DogeCordHandler {
+        public constructor(client: DogeCordClient, options: DogeCordHandlerOptions);
 
         public categories: Collection<string, Category<string, Inhibitor>>;
         public classToHandle: typeof Inhibitor;
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public directory: string;
         public modules: Collection<string, Inhibitor>;
 
@@ -353,11 +353,11 @@ declare module 'discord-akairo' {
         public on(event: 'load', listener: (inhibitor: Inhibitor, isReload: boolean) => any): this;
     }
 
-    export class Listener extends AkairoModule {
+    export class Listener extends DogeCordModule {
         public constructor(id: string, options?: ListenerOptions);
 
         public category: Category<string, Listener>;
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public emitter: string | EventEmitter;
         public event: string;
         public filepath: string;
@@ -369,12 +369,12 @@ declare module 'discord-akairo' {
         public remove(): this;
     }
 
-    export class ListenerHandler extends AkairoHandler {
-        public constructor(client: AkairoClient, options: AkairoHandlerOptions);
+    export class ListenerHandler extends DogeCordHandler {
+        public constructor(client: DogeCordClient, options: DogeCordHandlerOptions);
 
         public categories: Collection<string, Category<string, Listener>>;
         public classToHandle: typeof Listener;
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public directory: string;
         public emitters: Collection<string, EventEmitter>;
         public modules: Collection<string, Listener>;
@@ -454,7 +454,7 @@ declare module 'discord-akairo' {
     export class TypeResolver {
         public constructor(handler: CommandHandler);
 
-        public client: AkairoClient;
+        public client: DogeCordClient;
         public commandHandler: CommandHandler;
         public inhibitorHandler?: InhibitorHandler;
         public listenerHandler?: ListenerHandler;
@@ -471,7 +471,7 @@ declare module 'discord-akairo' {
         public static isPromise(value: any): boolean;
     }
 
-    export interface AkairoHandlerOptions {
+    export interface DogeCordHandlerOptions {
         automateCategories?: boolean;
         classToHandle?: Function;
         directory?: string;
@@ -479,11 +479,11 @@ declare module 'discord-akairo' {
         loadFilter?: LoadPredicate;
     }
 
-    export interface AkairoModuleOptions {
+    export interface DogeCordModuleOptions {
         category?: string;
     }
 
-    export interface AkairoOptions {
+    export interface DogeCordOptions {
         ownerID?: Snowflake | Snowflake[];
     }
 
@@ -544,7 +544,7 @@ declare module 'discord-akairo' {
         usedIndices: Set<number>;
     }
 
-    export interface CommandOptions extends AkairoModuleOptions {
+    export interface CommandOptions extends DogeCordModuleOptions {
         aliases?: string[];
         args?: ArgumentOptions[] | ArgumentGenerator;
         argumentDefaults?: DefaultArgumentOptions;
@@ -570,7 +570,7 @@ declare module 'discord-akairo' {
         quoted?: boolean;
     }
 
-    export interface CommandHandlerOptions extends AkairoHandlerOptions {
+    export interface CommandHandlerOptions extends DogeCordHandlerOptions {
         aliasReplacement?: RegExp;
         allowMention?: boolean | MentionPrefixPredicate;
         argumentDefaults?: DefaultArgumentOptions;
@@ -606,13 +606,13 @@ declare module 'discord-akairo' {
         failure: void | (Flag & { value: any });
     }
 
-    export interface InhibitorOptions extends AkairoModuleOptions {
+    export interface InhibitorOptions extends DogeCordModuleOptions {
         reason?: string;
         type?: string;
         priority?: number;
     }
 
-    export interface ListenerOptions extends AkairoModuleOptions {
+    export interface ListenerOptions extends DogeCordModuleOptions {
         emitter: string | EventEmitter;
         event: string;
         type?: string;
@@ -759,7 +759,7 @@ declare module 'discord-akairo' {
             INHIBITOR: 'inhibitor';
             LISTENER: 'listener';
         };
-        AkairoHandlerEvents: {
+        DogeCordHandlerEvents: {
             LOAD: 'load';
             REMOVE: 'remove';
         };

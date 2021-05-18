@@ -1,5 +1,5 @@
-const AkairoError = require('../../util/DogeCordError');
-const AkairoHandler = require('../DogeCordHandler');
+const DogeCordError = require('../../util/DogeCordError');
+const DogeCordHandler = require('../DogeCordHandler');
 const { BuiltInReasons, CommandHandlerEvents } = require('../../util/Constants');
 const { Collection } = require('discord.js');
 const Command = require('./Command');
@@ -10,11 +10,11 @@ const TypeResolver = require('./arguments/TypeResolver');
 
 /**
  * Loads commands and handles messages.
- * @param {AkairoClient} client - The Akairo client.
+ * @param {DogeCordClient} client - The Akairo client.
  * @param {CommandHandlerOptions} options - Options.
- * @extends {AkairoHandler}
+ * @extends {DogeCordHandler}
  */
-class CommandHandler extends AkairoHandler {
+class CommandHandler extends DogeCordHandler {
     constructor(client, {
         directory,
         classToHandle = Command,
@@ -38,7 +38,7 @@ class CommandHandler extends AkairoHandler {
         aliasReplacement
     } = {}) {
         if (!(classToHandle.prototype instanceof Command || classToHandle === Command)) {
-            throw new AkairoError('INVALID_CLASS_TO_HANDLE', classToHandle.name, Command.name);
+            throw new DogeCordError('INVALID_CLASS_TO_HANDLE', classToHandle.name, Command.name);
         }
 
         super(client, {
@@ -109,7 +109,7 @@ class CommandHandler extends AkairoHandler {
          */
         this.commandUtil = Boolean(commandUtil);
         if ((this.handleEdits || this.storeMessages) && !this.commandUtil) {
-            throw new AkairoError('COMMAND_UTIL_EXPLICIT');
+            throw new DogeCordError('COMMAND_UTIL_EXPLICIT');
         }
 
         /**
@@ -249,7 +249,7 @@ class CommandHandler extends AkairoHandler {
 
         for (let alias of command.aliases) {
             const conflict = this.aliases.get(alias.toLowerCase());
-            if (conflict) throw new AkairoError('ALIAS_CONFLICT', alias, command.id, conflict);
+            if (conflict) throw new DogeCordError('ALIAS_CONFLICT', alias, command.id, conflict);
 
             alias = alias.toLowerCase();
             this.aliases.set(alias, command.id);
@@ -258,7 +258,7 @@ class CommandHandler extends AkairoHandler {
 
                 if (replacement !== alias) {
                     const replacementConflict = this.aliases.get(replacement);
-                    if (replacementConflict) throw new AkairoError('ALIAS_CONFLICT', replacement, command.id, replacementConflict);
+                    if (replacementConflict) throw new DogeCordError('ALIAS_CONFLICT', replacement, command.id, replacementConflict);
                     this.aliases.set(replacement, command.id);
                 }
             }
@@ -1129,8 +1129,8 @@ module.exports = CommandHandler;
  */
 
 /**
- * Also includes properties from AkairoHandlerOptions.
- * @typedef {AkairoHandlerOptions} CommandHandlerOptions
+ * Also includes properties from DogeCordHandlerOptions.
+ * @typedef {DogeCordHandlerOptions} CommandHandlerOptions
  * @prop {boolean} [blockClient=true] - Whether or not to block self.
  * @prop {boolean} [blockBots=true] - Whether or not to block bots.
  * @prop {string|string[]|PrefixSupplier} [prefix='!'] - Default command prefix(es).

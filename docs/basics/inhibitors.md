@@ -7,9 +7,9 @@ Because inhibitors are another kind of module, we need another kind of handler.
 To set it up, simply import and instantiate the `InhibitorHandler`, just like with the command handler.  
 
 ```js
-const { AkairoClient, CommandHandler, InhibitorHandler } = require('discord-akairo');
+const { DogeCordClient, CommandHandler, InhibitorHandler } = require('discord-akairo');
 
-class MyClient extends AkairoClient {
+class MyClient extends DogeCordClient {
     constructor() {
         super({
             ownerID: '123992700587343872',

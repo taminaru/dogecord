@@ -7,9 +7,9 @@ The handlers deals with loading modules and executing them.
 For commands, we will import and instantiate the `CommandHandler`.  
 
 ```js
-const { AkairoClient, CommandHandler } = require('discord-akairo');
+const { DogeCordClient, CommandHandler } = require('discord-akairo');
 
-class MyClient extends AkairoClient {
+class MyClient extends DogeCordClient {
     constructor() {
         super({
             ownerID: '123992700587343872', // or ['123992700587343872', '86890631690977280']

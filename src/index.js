@@ -1,8 +1,8 @@
 module.exports = {
     // Core
-    AkairoClient: require('./struct/DogeCordClient'),
-    AkairoHandler: require('./struct/DogeCordHandler'),
-    AkairoModule: require('./struct/DogeCordModule'),
+    DogeCordClient: require('./struct/DogeCordClient'),
+    DogeCordHandler: require('./struct/DogeCordHandler'),
+    DogeCordModule: require('./struct/DogeCordModule'),
     ClientUtil: require('./struct/ClientUtil'),
 
     // Commands
@@ -30,7 +30,7 @@ module.exports = {
     MongooseProvider: require('./providers/MongooseProvider'),
 
     // Utilities
-    AkairoError: require('./util/DogeCordError'),
+    DogeCordError: require('./util/DogeCordError'),
     Category: require('./util/Category'),
     Constants: require('./util/Constants'),
     Util: require('./util/Util'),

@@ -1,4 +1,4 @@
-const AkairoError = require('../../../util/DogeCordError');
+const DogeCordError = require('../../../util/DogeCordError');
 const Argument = require('./Argument');
 const { ArgumentMatches } = require('../../../util/Constants');
 const Flag = require('../Flag');
@@ -15,7 +15,7 @@ class ArgumentRunner {
 
     /**
      * The Akairo client.
-     * @type {AkairoClient}
+     * @type {DogeCordClient}
      */
     get client() {
         return this.command.client;
@@ -94,7 +94,7 @@ class ArgumentRunner {
 
         const runFn = cases[arg.match];
         if (runFn == null) {
-            throw new AkairoError('UNKNOWN_MATCH_TYPE', arg.match);
+            throw new DogeCordError('UNKNOWN_MATCH_TYPE', arg.match);
         }
 
         return runFn.call(this, message, parsed, state, arg);

@@ -96,7 +96,7 @@ class Argument {
 
     /**
      * The client.
-     * @type {AkairoClient}
+     * @type {DogeCordClient}
      */
     get client() {
         return this.command.client;

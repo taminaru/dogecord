@@ -1,13 +1,13 @@
-const AkairoError = require('../../util/DogeCordError');
-const AkairoModule = require('../DogeCordModule');
+const DogeCordError = require('../../util/DogeCordError');
+const DogeCordModule = require('../DogeCordModule');
 
 /**
  * Represents an inhibitor.
  * @param {string} id - Inhibitor ID.
  * @param {InhibitorOptions} [options={}] - Options for the inhibitor.
- * @extends {AkairoModule}
+ * @extends {DogeCordModule}
  */
-class Inhibitor extends AkairoModule {
+class Inhibitor extends DogeCordModule {
     constructor(id, {
         category,
         reason = '',
@@ -57,7 +57,7 @@ class Inhibitor extends AkairoModule {
      * @returns {boolean|Promise<boolean>}
      */
     exec() {
-        throw new AkairoError('NOT_IMPLEMENTED', this.constructor.name, 'exec');
+        throw new DogeCordError('NOT_IMPLEMENTED', this.constructor.name, 'exec');
     }
 
     /**
@@ -79,8 +79,8 @@ module.exports = Inhibitor;
 
 /**
  * Options to use for inhibitor execution behavior.
- * Also includes properties from AkairoModuleOptions.
- * @typedef {AkairoModuleOptions}  InhibitorOptions
+ * Also includes properties from DogeCordModuleOptions.
+ * @typedef {DogeCordModuleOptions}  InhibitorOptions
  * @prop {string} [reason=''] - Reason emitted when command or message is blocked.
  * @prop {string} [type='post'] - Can be 'all' to run on all messages, 'pre' to run on messages not blocked by the built-in inhibitors, or 'post' to run on messages that are commands.
  * @prop {number} [priority=0] - Priority for the inhibitor for when more than one inhibitors block a message.

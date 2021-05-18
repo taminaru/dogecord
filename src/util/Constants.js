@@ -59,7 +59,7 @@ module.exports = {
         INHIBITOR: 'inhibitor',
         LISTENER: 'listener'
     },
-    AkairoHandlerEvents: {
+    DogeCordHandlerEvents: {
         LOAD: 'load',
         REMOVE: 'remove'
     },

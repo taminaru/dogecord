@@ -1,6 +1,6 @@
-const AkairoError = require('../util/DogeCordError');
-const { AkairoHandlerEvents } = require('../util/Constants');
-const AkairoModule = require('./DogeCordModule');
+const DogeCordError = require('../util/DogeCordError');
+const { DogeCordHandlerEvents } = require('../util/Constants');
+const DogeCordModule = require('./DogeCordModule');
 const Category = require('../util/Category');
 const { Collection } = require('discord.js');
 const EventEmitter = require('events');
@@ -9,14 +9,14 @@ const path = require('path');
 
 /**
  * Base class for handling modules.
- * @param {AkairoClient} client - The Akairo client.
- * @param {AkairoHandlerOptions} options - Options for module loading and handling.
+ * @param {DogeCordClient} client - The Akairo client.
+ * @param {DogeCordHandlerOptions} options - Options for module loading and handling.
  * @extends {EventEmitter}
  */
-class AkairoHandler extends EventEmitter {
+class DogeCordHandler extends EventEmitter {
     constructor(client, {
         directory,
-        classToHandle = AkairoModule,
+        classToHandle = DogeCordModule,
         extensions = ['.js', '.json', '.ts'],
         automateCategories = false,
         loadFilter = (() => true)
@@ -25,7 +25,7 @@ class AkairoHandler extends EventEmitter {
 
         /**
          * The Akairo client.
-         * @type {AkairoClient}
+         * @type {DogeCordClient}
          */
         this.client = client;
 
@@ -60,8 +60,8 @@ class AkairoHandler extends EventEmitter {
         this.loadFilter = loadFilter;
 
         /**
-         * Modules loaded, mapped by ID to AkairoModule.
-         * @type {Collection<string, AkairoModule>}
+         * Modules loaded, mapped by ID to DogeCordModule.
+         * @type {Collection<string, DogeCordModule>}
          */
         this.modules = new Collection();
 
@@ -74,7 +74,7 @@ class AkairoHandler extends EventEmitter {
 
     /**
      * Registers a module.
-     * @param {AkairoModule} mod - Module to use.
+     * @param {DogeCordModule} mod - Module to use.
      * @param {string} [filepath] - Filepath of module.
      * @returns {void}
      */
@@ -100,7 +100,7 @@ class AkairoHandler extends EventEmitter {
 
     /**
      * Deregisters a module.
-     * @param {AkairoModule} mod - Module to use.
+     * @param {DogeCordModule} mod - Module to use.
      * @returns {void}
      */
     deregister(mod) {
@@ -113,7 +113,7 @@ class AkairoHandler extends EventEmitter {
      * Loads a module, can be a module class or a filepath.
      * @param {string|Function} thing - Module class or path to module.
      * @param {boolean} [isReload=false] - Whether this is a reload or not.
-     * @returns {AkairoModule}
+     * @returns {DogeCordModule}
      */
     load(thing, isReload = false) {
         const isClass = typeof thing === 'function';
@@ -134,10 +134,10 @@ class AkairoHandler extends EventEmitter {
             return undefined;
         }
 
-        if (this.modules.has(mod.id)) throw new AkairoError('ALREADY_LOADED', this.classToHandle.name, mod.id);
+        if (this.modules.has(mod.id)) throw new DogeCordError('ALREADY_LOADED', this.classToHandle.name, mod.id);
 
         this.register(mod, isClass ? null : thing);
-        this.emit(AkairoHandlerEvents.LOAD, mod, isReload);
+        this.emit(DogeCordHandlerEvents.LOAD, mod, isReload);
         return mod;
     }
 
@@ -147,7 +147,7 @@ class AkairoHandler extends EventEmitter {
      * Defaults to the directory passed in the constructor.
      * @param {LoadPredicate} [filter] - Filter for files, where true means it should be loaded.
      * Defaults to the filter passed in the constructor.
-     * @returns {AkairoHandler}
+     * @returns {DogeCordHandler}
      */
     loadAll(directory = this.directory, filter = this.loadFilter || (() => true)) {
         const filepaths = this.constructor.readdirRecursive(directory);
@@ -162,21 +162,21 @@ class AkairoHandler extends EventEmitter {
     /**
      * Removes a module.
      * @param {string} id - ID of the module.
-     * @returns {AkairoModule}
+     * @returns {DogeCordModule}
      */
     remove(id) {
         const mod = this.modules.get(id.toString());
-        if (!mod) throw new AkairoError('MODULE_NOT_FOUND', this.classToHandle.name, id);
+        if (!mod) throw new DogeCordError('MODULE_NOT_FOUND', this.classToHandle.name, id);
 
         this.deregister(mod);
 
-        this.emit(AkairoHandlerEvents.REMOVE, mod);
+        this.emit(DogeCordHandlerEvents.REMOVE, mod);
         return mod;
     }
 
     /**
      * Removes all modules.
-     * @returns {AkairoHandler}
+     * @returns {DogeCordHandler}
      */
     removeAll() {
         for (const m of Array.from(this.modules.values())) {
@@ -189,12 +189,12 @@ class AkairoHandler extends EventEmitter {
     /**
      * Reloads a module.
      * @param {string} id - ID of the module.
-     * @returns {AkairoModule}
+     * @returns {DogeCordModule}
      */
     reload(id) {
         const mod = this.modules.get(id.toString());
-        if (!mod) throw new AkairoError('MODULE_NOT_FOUND', this.classToHandle.name, id);
-        if (!mod.filepath) throw new AkairoError('NOT_RELOADABLE', this.classToHandle.name, id);
+        if (!mod) throw new DogeCordError('MODULE_NOT_FOUND', this.classToHandle.name, id);
+        if (!mod.filepath) throw new DogeCordError('NOT_RELOADABLE', this.classToHandle.name, id);
 
         this.deregister(mod);
 
@@ -205,7 +205,7 @@ class AkairoHandler extends EventEmitter {
 
     /**
      * Reloads all modules.
-     * @returns {AkairoHandler}
+     * @returns {DogeCordHandler}
      */
     reloadAll() {
         for (const m of Array.from(this.modules.values())) {
@@ -252,26 +252,26 @@ class AkairoHandler extends EventEmitter {
     }
 }
 
-module.exports = AkairoHandler;
+module.exports = DogeCordHandler;
 
 /**
  * Emitted when a module is loaded.
- * @event AkairoHandler#load
- * @param {AkairoModule} mod - Module loaded.
+ * @event DogeCordHandler#load
+ * @param {DogeCordModule} mod - Module loaded.
  * @param {boolean} isReload - Whether or not this was a reload.
  */
 
 /**
  * Emitted when a module is removed.
- * @event AkairoHandler#remove
- * @param {AkairoModule} mod - Module removed.
+ * @event DogeCordHandler#remove
+ * @param {DogeCordModule} mod - Module removed.
  */
 
 /**
  * Options for module loading and handling.
- * @typedef {Object} AkairoHandlerOptions
+ * @typedef {Object} DogeCordHandlerOptions
  * @prop {string} [directory] - Directory to modules.
- * @prop {Function} [classToHandle=AkairoModule] - Only classes that extends this class can be handled.
+ * @prop {Function} [classToHandle=DogeCordModule] - Only classes that extends this class can be handled.
  * @prop {string[]|Set<string>} [extensions] - File extensions to load.
  * By default this is .js, .json, and .ts files.
  * @prop {boolean} [automateCategories=false] - Whether or not to set each module's category to its parent directory name.

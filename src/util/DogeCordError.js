@@ -25,7 +25,7 @@ const Messages = {
  * @param {...any} args - Arguments.
  * @extends {Error}
  */
-class AkairoError extends Error {
+class DogeCordError extends Error {
     constructor(key, ...args) {
         if (Messages[key] == null) throw new TypeError(`Error key '${key}' does not exist`);
         const message = typeof Messages[key] === 'function'
@@ -37,8 +37,8 @@ class AkairoError extends Error {
     }
 
     get name() {
-        return `AkairoError [${this.code}]`;
+        return `DogeCordError [${this.code}]`;
     }
 }
 
-module.exports = AkairoError;
+module.exports = DogeCordError;

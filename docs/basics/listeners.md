@@ -10,9 +10,9 @@ Let's add some listeners.
 You have to setup a `ListenerHandler` just like with commands and inhibitors.  
 
 ```js
-const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('discord-akairo');
+const { DogeCordClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('discord-akairo');
 
-class MyClient extends AkairoClient {
+class MyClient extends DogeCordClient {
     constructor() {
         super({
             ownerID: '123992700587343872',

@@ -4,11 +4,11 @@ const ClientUtil = require("./ClientUtil");
 /**
  * The Akairo framework client.
  * Creates the handlers and sets them up.
- * @param {AkairoOptions} [options={}] - Options for the client.
+ * @param {DogeCordOptions} [options={}] - Options for the client.
  * @param {ClientOptions} [clientOptions] - Options for Discord JS client.
  * If not specified, the previous options parameter is used instead.
  */
-class AkairoClient extends Client {
+class DogeCordClient extends Client {
   constructor(options = {}, clientOptions) {
     super(clientOptions || options);
 
@@ -40,10 +40,10 @@ class AkairoClient extends Client {
   }
 }
 
-module.exports = AkairoClient;
+module.exports = DogeCordClient;
 
 /**
  * Options for the client.
- * @typedef {Object} AkairoOptions
+ * @typedef {Object} DogeCordOptions
  * @prop {Snowflake|Snowflake[]} [ownerID=''] - Discord ID of the client owner(s).
  */

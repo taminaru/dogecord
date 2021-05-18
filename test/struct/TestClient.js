@@ -1,6 +1,6 @@
-const { AkairoClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('../../src/index');
+const { DogeCordClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('../../src/index');
 
-class TestClient extends AkairoClient {
+class TestClient extends DogeCordClient {
     constructor() {
         super({
             ownerID: '370637638820036608'

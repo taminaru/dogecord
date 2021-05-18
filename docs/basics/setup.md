@@ -22,13 +22,13 @@ mybot
 
 ### Main File
 
-Inside `bot.js`, require `discord-akairo` and extend the `AkairoClient` class to customize your client.  
+Inside `bot.js`, require `discord-akairo` and extend the `DogeCordClient` class to customize your client.  
 As your bot gets more complicated, you may want to separate this client class from your main file.  
 
 ```js
-const { AkairoClient } = require('discord-akairo');
+const { DogeCordClient } = require('discord-akairo');
 
-class MyClient extends AkairoClient {
+class MyClient extends DogeCordClient {
     constructor() {
         super({
             // Options for Akairo go here.
@@ -47,9 +47,9 @@ If you would like to have multiple owners simply add those with an array.
 We want to use Discord.js's `disableMentions` option too.  
 
 ```js
-const { AkairoClient } = require('discord-akairo');
+const { DogeCordClient } = require('discord-akairo');
 
-class MyClient extends AkairoClient {
+class MyClient extends DogeCordClient {
     constructor() {
         super({
             ownerID: '123992700587343872', // or ['123992700587343872', '86890631690977280']

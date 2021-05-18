@@ -49,7 +49,7 @@ Below are breaking changes that may require some more thought when fixing.
 
 ##### General
 
-The structure of the AkairoClient and the various handlers has been changed.  
+The structure of the DogeCordClient and the various handlers has been changed.  
 To see what has changed, start at [Setting Up](../basics/setup.md).  
 
 Before, in a type function of an arg when returning a Promise, it would only be a cast failure if the Promise rejected.  
@@ -128,14 +128,14 @@ Suggestions will be made for replacements.
 
 Loading modules by instances is now unsupported.  
 This means you cannot do, for example, `module.exports = new Command(...)` or `handler.load(new Listener(...))`.  
-Subsequently, this also means that the constructor for AkairoModule and related have also changed.  
+Subsequently, this also means that the constructor for DogeCordModule and related have also changed.  
 The constructor is now `(id, options)` instead of `(id, exec, options)`.  
-The `exec` method is now also not on the AkairoModule prototype and should be implemented where needed when extending.  
+The `exec` method is now also not on the DogeCordModule prototype and should be implemented where needed when extending.  
 
-The AkairoHandler method `add` has been removed.  
+The DogeCordHandler method `add` has been removed.  
 Use the `load` with a full path instead.  
 
-The AkairoHandler events `add` and `reload` have been removed.  
+The DogeCordHandler events `add` and `reload` have been removed.  
 The `load` event will now take care of both.  
 When reloaded, the `load` event will pass a second parameter which is a boolean, signifying that is was a reload.  
 
@@ -163,12 +163,12 @@ Instead, use a union type e.g. `Argument.union('integer', 'string')`.
 
 ##### SQLiteHandler
 
-SQLiteHandler and related properties in AkairoClient have been removed completely.  
+SQLiteHandler and related properties in DogeCordClient have been removed completely.  
 Alternatives include `SQLiteProvider` and `SequelizeProvider`.  
 Or, you can make your own by extending the `Provider` class.  
 For a guide on how to use the new providers, see [Using Providers](./providers,md).  
 
 ##### Other Removals
 
-Other removals include the send aliases in CommandUtil, deprecated methods in ClientUtil, and some methods in AkairoClient.  
+Other removals include the send aliases in CommandUtil, deprecated methods in ClientUtil, and some methods in DogeCordClient.  
 Most of them can now be found in Discord.js itself or implemented yourself if needed.  

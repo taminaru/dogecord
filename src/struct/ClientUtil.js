@@ -7,13 +7,13 @@ const {
 
 /**
  * Client utilities to help with common tasks.
- * @param {AkairoClient} client - The client.
+ * @param {DogeCordClient} client - The client.
  */
 class ClientUtil {
   constructor(client) {
     /**
      * The Akairo client.
-     * @type {AkairoClient}
+     * @type {DogeCordClient}
      */
     this.client = client;
   }
