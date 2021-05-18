@@ -9,7 +9,7 @@ Conditional commands are commands that run if the following conditions are true:
 Multiple conditional commands/regex commands can be triggered on one message.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class ComplimentCommand extends Command {
     constructor() {

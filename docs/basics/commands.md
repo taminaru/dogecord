@@ -7,7 +7,7 @@ The handlers deals with loading modules and executing them.
 For commands, we will import and instantiate the `CommandHandler`.  
 
 ```js
-const { DogeCordClient, CommandHandler } = require('discord-akairo');
+const { DogeCordClient, CommandHandler } = require('@taminaru/dogecord');
 
 class MyClient extends DogeCordClient {
     constructor() {
@@ -53,13 +53,13 @@ We specified that the `directory` is in `./commands/`.
 So, go there, make a new file, and require Akairo.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 ```
 
 Here is a basic ping command:  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PingCommand extends Command {
     constructor() {

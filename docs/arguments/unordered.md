@@ -6,7 +6,7 @@ Arguments can be made to be unordered.
 For example, if you want a command where the arguments are a role and a member in any order:  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class AddRoleCommand extends Command {
     constructor() {

@@ -24,7 +24,7 @@ With `handleEdits` on, the `send` methods will edit responses accordingly.
 This works for prompts as well.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class HelloCommand extends Command {
     constructor() {
@@ -56,7 +56,7 @@ The format for command is almost always `<prefix><alias> <arguments>`.
 CommandUtil stores all three of that and more for you.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class HelloCommand extends Command {
     constructor() {

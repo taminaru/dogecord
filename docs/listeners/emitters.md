@@ -19,7 +19,7 @@ The key will be the emitter's name, and the value is the emitter itself.
 Now, we can use a listener on the process:  
 
 ```js
-const { Listener } = require('discord-akairo');
+const { Listener } = require('@taminaru/dogecord');
 
 class UnhandledRejectionListener extends Listener {
     constructor() {

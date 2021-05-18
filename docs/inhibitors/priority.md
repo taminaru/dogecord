@@ -10,7 +10,7 @@ Whenever both inhibitors block a message, the `commandBlocked` event would fire 
 If you want the global blacklist inhibitor's instead you can use the `priority` option.  
 
 ```js
-const { Inhibitor } = require('discord-akairo');
+const { Inhibitor } = require('@taminaru/dogecord');
 const globalBlacklist = require('something');
 
 class GlobalBlacklistInhibitor extends Inhibitor {

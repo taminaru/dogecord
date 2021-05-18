@@ -5,7 +5,7 @@
 You can categorize a module with the `category` option.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PingCommand extends Command {
     constructor() {
@@ -34,7 +34,7 @@ With that said, this means you can add, remove, or reload modules while the bot 
 Here is a basic command that reloads the inputted ID:  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class ReloadCommand extends Command {
     constructor() {

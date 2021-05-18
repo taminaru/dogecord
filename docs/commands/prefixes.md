@@ -38,7 +38,7 @@ Prefix overrides are command-specific prefixes.
 To use them, simply add the `prefix` option.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class SecretCommand extends Command {
     constructor() {

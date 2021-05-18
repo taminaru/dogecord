@@ -13,7 +13,7 @@ With this, you can do things such as:
 To get started, take this command:  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class GeneratorCommand extends Command {
     constructor() {

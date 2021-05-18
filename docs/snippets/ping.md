@@ -1,7 +1,7 @@
 # Ping Command
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PingCommand extends Command {
     constructor() {

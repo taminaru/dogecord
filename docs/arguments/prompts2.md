@@ -6,7 +6,7 @@ Optional prompts are prompts that run if there was input, but the type casting f
 If there was no input, it would go on as normal.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class HighestRoleCommand extends Command {
     constructor() {
@@ -48,7 +48,7 @@ Infinite prompts are prompts that go on and on until the user says stop.
 (You can customize the input, but by default it is `stop`.)  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PickCommand extends Command {
     constructor() {

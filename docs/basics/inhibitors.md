@@ -7,7 +7,7 @@ Because inhibitors are another kind of module, we need another kind of handler.
 To set it up, simply import and instantiate the `InhibitorHandler`, just like with the command handler.  
 
 ```js
-const { DogeCordClient, CommandHandler, InhibitorHandler } = require('discord-akairo');
+const { DogeCordClient, CommandHandler, InhibitorHandler } = require('@taminaru/dogecord');
 
 class MyClient extends DogeCordClient {
     constructor() {
@@ -45,7 +45,7 @@ this.inhibitorHandler.loadAll();
 Create a folder named `inhibitors`, then a file there to make one.  
 
 ```js
-const { Inhibitor } = require('discord-akairo');
+const { Inhibitor } = require('@taminaru/dogecord');
 
 class BlacklistInhibitor extends Inhibitor {
     constructor() {

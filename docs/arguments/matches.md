@@ -7,7 +7,7 @@ Obviously, you won't know how many things there are.
 So, we need a different way of matching input instead of phrase by phrase.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PickCommand extends Command {
     constructor() {
@@ -34,7 +34,7 @@ module.exports = PickCommand;
 To remedy this, we will use the `match` option.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PickCommand extends Command {
     constructor() {
@@ -69,7 +69,7 @@ This is where `flag` match comes in handy.
 Here is a command where the user can change the output with a flag:  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 const exampleAPI = require('example-api');
 
 class StatsCommand extends Command {
@@ -114,7 +114,7 @@ Here, we will use `option` for unordered input.
 Similar to the above example, but this time, we have many different possibilities.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 const exampleAPI = require('example-api');
 
 class StatsCommand extends Command {
@@ -170,7 +170,7 @@ This would mean having to deal with splitting then casting the types within the 
 We can do this with a custom separator using `separator` option alongside the `separate` match.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PickCommand extends Command {
     constructor() {

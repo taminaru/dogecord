@@ -12,7 +12,7 @@ First, create a new SQLiteProvider or SequelizeProvider.
 const sqlite = require('sqlite');
 const sequelize = require('sequelize');
 
-const { DogeCordClient, SQLiteProvider, SequelizeProvider } = require('discord-akairo');
+const { DogeCordClient, SQLiteProvider, SequelizeProvider } = require('@taminaru/dogecord');
 
 class CustomClient extends DogeCordClient {
     constructor() {
@@ -83,7 +83,7 @@ class CustomClient extends DogeCordClient {
 Values can be set with the `set` method:  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PrefixCommand extends Command {
     constructor() {

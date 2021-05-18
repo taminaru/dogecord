@@ -10,7 +10,7 @@ First, create a new MongooseProvider.
 // connect to database and then require this file (eg. bot.js)
 const model = require('./path/to/model'); // see Model Example below
 
-const { DogeCordClient, MongooseProvider } = require('discord-akairo');
+const { DogeCordClient, MongooseProvider } = require('@taminaru/dogecord');
 
 class CustomClient extends DogeCordClient {
     constructor() {
@@ -61,7 +61,7 @@ class CustomClient extends DogeCordClient {
 Values can be set with the `set` method:
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class PrefixCommand extends Command {
     constructor() {

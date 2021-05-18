@@ -8,7 +8,7 @@ They do not actually run on all messages.
 To change that, change the `type` option.  
 
 ```js
-const { Inhibitor } = require('discord-akairo');
+const { Inhibitor } = require('@taminaru/dogecord');
 
 class BlacklistInhibitor extends Inhibitor {
     constructor() {

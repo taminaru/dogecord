@@ -7,7 +7,7 @@ There are options to help you do this.
 The two options to use are `clientPermissions` and `userPermissions`.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class BanCommand extends Command {
     constructor() {
@@ -52,7 +52,7 @@ The return value is the `missing` parameter that is sent to the `missingPermissi
 If the return value is null, then that means they're not missing anything.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class BanCommand extends Command {
     constructor() {

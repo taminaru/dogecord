@@ -1,4 +1,4 @@
-declare module 'discord-akairo' {
+declare module '@taminaru/dogecord' {
     import {
         BufferResolvable, Client, ClientOptions, Collection,
         Message, MessageAttachment, MessageEmbed,
@@ -169,6 +169,7 @@ declare module 'discord-akairo' {
         public ignoreCooldown?: Snowflake | Snowflake[] | IgnoreCheckPredicate;
         public ignorePermissions?: Snowflake | Snowflake[] | IgnoreCheckPredicate;
         public ownerOnly: boolean;
+        public superUserOnly: boolean; // working on it...
         public prefix?: string | string[] | PrefixSupplier;
         public ratelimit: number;
         public regex: RegExp | RegexSupplier;
@@ -561,6 +562,7 @@ declare module 'discord-akairo' {
         lock?: KeySupplier | 'guild' | 'channel' | 'user';
         optionFlags?: string[];
         ownerOnly?: boolean;
+        superUserOnly?: boolean;
         prefix?: string | string[] | PrefixSupplier;
         ratelimit?: number;
         regex?: RegExp | RegexSupplier;

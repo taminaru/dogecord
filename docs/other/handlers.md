@@ -7,7 +7,7 @@ So, you can create your own handlers and module types!
 Create a new class for your module.  
 
 ```js
-const { DogeCordModule } = require('discord-akairo');
+const { DogeCordModule } = require('@taminaru/dogecord');
 
 class CustomModule extends DogeCordModule {
     constructor(id, options = {}) {
@@ -31,7 +31,7 @@ We throw an error there just in case you forget to implement it.
 Then, create a new class for your handler:  
 
 ```js
-const { DogeCordHandler } = require('discord-akairo');
+const { DogeCordHandler } = require('@taminaru/dogecord');
 const CustomModule = require('./CustomModule');
 
 class CustomHandler extends DogeCordHandler {
@@ -52,7 +52,7 @@ For the handler, the `super()` takes the client, the directory for the handler, 
 Now we can add it to our client if we so desire:  
 
 ```js
-const { DogeCordClient } = require('discord-akairo');
+const { DogeCordClient } = require('@taminaru/dogecord');
 const CustomHandler = require('./CustomHandler');
 
 class MyClient extends DogeCordClient {

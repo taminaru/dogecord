@@ -10,7 +10,7 @@ Regex commands are commands that run if the following conditions are true:
 Multiple regex commands/conditional commands can be triggered from one message.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class AyyCommand extends Command {
     constructor() {
@@ -36,7 +36,7 @@ The `matches` property will be the matches, if using a global regex.
 The `regex` option can also be a function.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class AyyCommand extends Command {
     constructor() {

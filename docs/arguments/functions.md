@@ -7,7 +7,7 @@ What if we want to use a default such as the author's username or the guild's ow
 This is where you can use a function.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class HighestRoleCommand extends Command {
     constructor() {
@@ -41,7 +41,7 @@ Let's go to using a function for types.
 Take a look at the roll command below.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class RollCommand extends Command {
     constructor() {
@@ -71,7 +71,7 @@ While we could do it in the execution function, let's stick it straight into the
 This is much easier with a validation type (see [Composing Types](./compose.md)), but for the sake of example, let's do it anyways.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class RollCommand extends Command {
     constructor() {

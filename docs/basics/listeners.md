@@ -10,7 +10,7 @@ Let's add some listeners.
 You have to setup a `ListenerHandler` just like with commands and inhibitors.  
 
 ```js
-const { DogeCordClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('discord-akairo');
+const { DogeCordClient, CommandHandler, InhibitorHandler, ListenerHandler } = require('@taminaru/dogecord');
 
 class MyClient extends DogeCordClient {
     constructor() {
@@ -53,7 +53,7 @@ And now, we can make a listener!
 Let's start with a simple client `ready` event.  
 
 ```js
-const { Listener } = require('discord-akairo');
+const { Listener } = require('@taminaru/dogecord');
 
 class ReadyListener extends Listener {
     constructor() {
@@ -102,7 +102,7 @@ They are emitted to the `messageBlocked` (anything with `pre` type or before) or
 Since we set the command handler to the key `commandHandler` up above, we have to use that as the `emitter` option.  
 
 ```js
-const { Listener } = require('discord-akairo');
+const { Listener } = require('@taminaru/dogecord');
 
 class CommandBlockedListener extends Listener {
     constructor() {

@@ -5,7 +5,7 @@
 If a command requires a guild to be used correctly, you can restrict it to a guild with one option.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class NicknameCommand extends Command {
     constructor() {
@@ -25,7 +25,7 @@ module.exports = NicknameCommand;
 The above breaks in a DM, so let's add the `channel` option.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class NicknameCommand extends Command {
     constructor() {
@@ -53,7 +53,7 @@ Your commands can be owner-only, restricting them to be used by the owner(s).
 Simply add `ownerOnly`.  
 
 ```js
-const { Command } = require('discord-akairo');
+const { Command } = require('@taminaru/dogecord');
 
 class TokenCommand extends Command {
     constructor() {
