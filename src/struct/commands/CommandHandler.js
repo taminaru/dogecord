@@ -10,7 +10,7 @@ const TypeResolver = require('./arguments/TypeResolver');
 
 /**
  * Loads commands and handles messages.
- * @param {DogeCordClient} client - The Akairo client.
+ * @param {DogeCordClient} client - The Doge client.
  * @param {CommandHandlerOptions} options - Options.
  * @extends {DogeCordHandler}
  */
@@ -388,6 +388,72 @@ class CommandHandler extends DogeCordHandler {
         } catch (err) {
             this.emitError(err, message);
             return null;
+        }
+    }
+
+     /**
+     * Handles a slash command.
+     * @param {CommandInteraction} interaction - Interaction to handle.
+     * @returns {Promise<?boolean>}
+     */
+      async handleSlash(interaction) {
+        if (!interaction.isCommand()) return false;
+
+        if (!interaction.guildID) {
+            this.emit('slashGuildOnly', interaction);
+            return false;
+        }
+
+        const command = this.modules.get(interaction.commandName);
+
+        if (!command) {
+            this.emit('slashNotFound', interaction);
+            return false;
+        }
+
+        if (command.ownerOnly && !this.client.isOwner(interaction.user)) {
+            this.emit('slashBlocked', interaction, command, 'owner');
+            return false;
+        }
+        if (command.superUserOnly && !this.client.isSuperUser(interaction.user)) {
+            this.emit('slashBlocked', interaction, command, 'superuser');
+            return false;
+        }
+        const userPermissions = interaction.channel.permissionsFor(interaction.member).toArray();
+        const userMissingPermissions = command.userPermissions.filter(p => !userPermissions.includes(p));
+        if (
+            command.userPermissions
+			&& command.userPermissions.length > 0
+			&& userMissingPermissions.length > 0
+        ) {
+            this.emit('slashMissingPermissions', interaction, command, 'user', userMissingPermissions);
+            return false;
+        }
+
+        const clientPermissions = interaction.channel.permissionsFor(interaction.guild.me).toArray();
+        const clientMissingPermissions = command.clientPermissions.filter(p => !clientPermissions.includes(p));
+        if (
+            command.clientPermissions
+			&& command.clientPermissions.length > 0
+			&& clientMissingPermissions.length > 0
+        ) {
+            this.emit('slashMissingPermissions', interaction, command, 'client', clientMissingPermissions);
+            return false;
+        }
+
+        try {
+            interaction.defer(false);
+            interaction.reply = interaction.editReply;
+            const convertedOptions = {};
+            for (const option of interaction.options) {
+                convertedOptions[option.name] = option;
+            }
+            this.emit('slashStarted', interaction, command);
+            await command.execSlash(interaction, convertedOptions);
+            return true;
+        } catch (err) {
+            this.emit('slashError', err, interaction, command);
+            return false;
         }
     }
 
