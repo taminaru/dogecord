@@ -75,6 +75,12 @@ class Command extends DogeCordModule {
         this.ownerOnly = Boolean(ownerOnly);
 
         /**
+         * Usable only by the client owner.
+         * @type {boolean}
+         */
+         this.superUserOnly = Boolean(superUserOnly);
+
+        /**
          * Whether or not this command can be ran by an edit.
          * @type {boolean}
          */
