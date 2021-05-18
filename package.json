@@ -17,8 +17,10 @@
     "commands",
     "arguments"
   ],
+  "dependencies": {},
   "devDependencies": {
     "@types/node": "^15.3.0",
+    "discord.js": "^12.5.3",
     "discord.js-docgen": "github:discordjs/docgen",
     "eslint": "^7.26.0",
     "jsdoc": "^3.6.7",

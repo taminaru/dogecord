@@ -1,5 +1,5 @@
-const AkairoError = require('../../util/AkairoError');
-const AkairoHandler = require('../AkairoHandler');
+const AkairoError = require('../../util/DogeCordError');
+const AkairoHandler = require('../DogeCordHandler');
 const Inhibitor = require('./Inhibitor');
 const { isPromise } = require('../../util/Util');
 

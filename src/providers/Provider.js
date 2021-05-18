@@ -1,4 +1,4 @@
-const AkairoError = require('../util/AkairoError');
+const AkairoError = require('../util/DogeCordError');
 const { Collection } = require('discord.js');
 
 /**

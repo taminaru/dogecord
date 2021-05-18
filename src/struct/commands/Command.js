@@ -1,5 +1,5 @@
-const AkairoError = require('../../util/AkairoError');
-const AkairoModule = require('../AkairoModule');
+const AkairoError = require('../../util/DogeCordError');
+const AkairoModule = require('../DogeCordModule');
 const Argument = require('./arguments/Argument');
 const ArgumentRunner = require('./arguments/ArgumentRunner');
 const ContentParser = require('./ContentParser');

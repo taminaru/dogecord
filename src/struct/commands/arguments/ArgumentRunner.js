@@ -1,4 +1,4 @@
-const AkairoError = require('../../../util/AkairoError');
+const AkairoError = require('../../../util/DogeCordError');
 const Argument = require('./Argument');
 const { ArgumentMatches } = require('../../../util/Constants');
 const Flag = require('../Flag');

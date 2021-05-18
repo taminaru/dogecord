@@ -1,6 +1,6 @@
-const AkairoError = require('../util/AkairoError');
+const AkairoError = require('../util/DogeCordError');
 const { AkairoHandlerEvents } = require('../util/Constants');
-const AkairoModule = require('./AkairoModule');
+const AkairoModule = require('./DogeCordModule');
 const Category = require('../util/Category');
 const { Collection } = require('discord.js');
 const EventEmitter = require('events');
