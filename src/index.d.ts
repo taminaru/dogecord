@@ -1,12 +1,28 @@
 declare module '@taminaru/dogecord' {
     import {
-        BufferResolvable, Client, ClientOptions, Collection,
-        Message, MessageAttachment, MessageEmbed,
-        MessageAdditions, MessageEditOptions, MessageOptions, SplitOptions,
-        User, UserResolvable, GuildMember,
-        Channel, Role, Emoji, Guild,
-        PermissionResolvable, StringResolvable, Snowflake
-    } from 'discord.js';
+			BufferResolvable,
+			Client,
+			ClientOptions,
+			Collection,
+			Message,
+			MessageAttachment,
+			MessageEmbed,
+			MessageAdditions,
+			MessageEditOptions,
+			MessageOptions,
+			SplitOptions,
+			User,
+			UserResolvable,
+			GuildMember,
+			Channel,
+			Role,
+			Emoji,
+			Guild,
+			PermissionResolvable,
+			StringResolvable,
+			Snowflake,
+			CommandInteraction,
+		} from "discord.js";
 
     import { EventEmitter } from 'events';
     import { Stream } from 'stream';
@@ -149,40 +165,47 @@ declare module '@taminaru/dogecord' {
     }
 
     export class Command extends DogeCordModule {
-        public constructor(id: string, options?: CommandOptions);
+			public constructor(id: string, options?: CommandOptions);
 
-        public aliases: string[];
-        public argumentDefaults: DefaultArgumentOptions;
-        public quoted: boolean;
-        public category: Category<string, Command>;
-        public channel?: string;
-        public client: DogeCordClient;
-        public clientPermissions: PermissionResolvable | PermissionResolvable[] | MissingPermissionSupplier;
-        public cooldown?: number;
-        public description: string | any;
-        public editable: boolean;
-        public filepath: string;
-        public handler: CommandHandler;
-        public id: string;
-        public lock?: KeySupplier;
-        public locker?: Set<string>;
-        public ignoreCooldown?: Snowflake | Snowflake[] | IgnoreCheckPredicate;
-        public ignorePermissions?: Snowflake | Snowflake[] | IgnoreCheckPredicate;
-        public ownerOnly: boolean;
-        public superUserOnly: boolean; // working on it...
-        public prefix?: string | string[] | PrefixSupplier;
-        public ratelimit: number;
-        public regex: RegExp | RegexSupplier;
-        public typing: boolean;
-        public userPermissions: PermissionResolvable | PermissionResolvable[] | MissingPermissionSupplier;
+			public aliases: string[];
+			public argumentDefaults: DefaultArgumentOptions;
+			public quoted: boolean;
+			public category: Category<string, Command>;
+			public channel?: string;
+			public client: DogeCordClient;
+			public clientPermissions:
+				| PermissionResolvable
+				| PermissionResolvable[]
+				| MissingPermissionSupplier;
+			public cooldown?: number;
+			public description: string | any;
+			public editable: boolean;
+			public filepath: string;
+			public handler: CommandHandler;
+			public id: string;
+			public lock?: KeySupplier;
+			public locker?: Set<string>;
+			public ignoreCooldown?: Snowflake | Snowflake[] | IgnoreCheckPredicate;
+			public ignorePermissions?: Snowflake | Snowflake[] | IgnoreCheckPredicate;
+			public ownerOnly: boolean;
+			public superUserOnly: boolean; // working on it...
+			public prefix?: string | string[] | PrefixSupplier;
+			public ratelimit: number;
+			public options: any | any[];
+			public regex: RegExp | RegexSupplier;
+			public typing: boolean;
+			public userPermissions:
+				| PermissionResolvable
+				| PermissionResolvable[]
+				| MissingPermissionSupplier;
 
-        public before(message: Message): any;
-        public condition(message: Message): boolean;
-        public exec(message: Message, args: any): any;
-        public parse(message: Message, content: string): Promise<Flag | any>;
-        public reload(): this;
-        public remove(): this;
-    }
+			public before(message: Message): any;
+			public condition(message: Message): boolean;
+			public exec(message: Message, args: any): any;
+			public parse(message: Message, content: string): Promise<Flag | any>;
+			public reload(): this;
+			public remove(): this;
+		}
 
     export class CommandHandler extends DogeCordHandler {
         public constructor(client: DogeCordClient, options: CommandHandlerOptions);
