@@ -214,6 +214,7 @@ declare module '@taminaru/dogecord' {
         public prompts: Collection<string, Set<string>>;
         public resolver: TypeResolver;
         public storeMessage: boolean;
+        public autoDefer: boolean;
 
         public add(filename: string): Command;
         public addPrompt(channel: Channel, user: User): void;

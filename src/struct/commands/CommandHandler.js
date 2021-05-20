@@ -35,7 +35,8 @@ class CommandHandler extends DogeCordHandler {
         argumentDefaults = {},
         prefix = '!',
         allowMention = true,
-        aliasReplacement
+        aliasReplacement,
+        autoDefer = true
     } = {}) {
         if (!(classToHandle.prototype instanceof Command || classToHandle === Command)) {
             throw new DogeCordError('INVALID_CLASS_TO_HANDLE', classToHandle.name, Command.name);
@@ -66,6 +67,12 @@ class CommandHandler extends DogeCordHandler {
          * @type {?RegExp}
          */
         this.aliasReplacement = aliasReplacement;
+
+         /**
+         * Automatically defer messages "BotName is thinking"
+         * Defaults to true.
+         */
+        this.autoDefer = autoDefer;
 
         /**
          * Collection of prefix overwrites to commands.
@@ -396,7 +403,7 @@ class CommandHandler extends DogeCordHandler {
      * @param {CommandInteraction} interaction - Interaction to handle.
      * @returns {Promise<?boolean>}
      */
-      async handleSlash(interaction) {
+    async handleSlash(interaction) {
         if (!interaction.isCommand()) return false;
 
         if (!interaction.guildID) {
@@ -420,30 +427,41 @@ class CommandHandler extends DogeCordHandler {
             return false;
         }
         const userPermissions = interaction.channel.permissionsFor(interaction.member).toArray();
-        const userMissingPermissions = command.userPermissions.filter(p => !userPermissions.includes(p));
-        if (
-            command.userPermissions
-			&& command.userPermissions.length > 0
-			&& userMissingPermissions.length > 0
-        ) {
-            this.emit('slashMissingPermissions', interaction, command, 'user', userMissingPermissions);
-            return false;
+
+        if (command.userPermissions) {
+            const userMissingPermissions = command.userPermissions.filter(p => !userPermissions.includes(p));
+            if (
+                command.userPermissions
+                && command.userPermissions.length > 0
+                && userMissingPermissions.length > 0
+            ) {
+                this.emit('slashMissingPermissions', interaction, command, 'user', userMissingPermissions);
+                return false;
+            }
         }
+
 
         const clientPermissions = interaction.channel.permissionsFor(interaction.guild.me).toArray();
-        const clientMissingPermissions = command.clientPermissions.filter(p => !clientPermissions.includes(p));
-        if (
-            command.clientPermissions
-			&& command.clientPermissions.length > 0
-			&& clientMissingPermissions.length > 0
-        ) {
-            this.emit('slashMissingPermissions', interaction, command, 'client', clientMissingPermissions);
-            return false;
+
+        if (command.clientPermissions) {
+            const clientMissingPermissions = command.clientPermissions.filter(p => !clientPermissions.includes(p));
+            if (
+                command.clientPermissions
+                && command.clientPermissions.length > 0
+                && clientMissingPermissions.length > 0
+            ) {
+                this.emit('slashMissingPermissions', interaction, command, 'client', clientMissingPermissions);
+                return false;
+            }
         }
 
+
         try {
-            interaction.defer(false);
-            interaction.reply = interaction.editReply;
+            if (this.autoDefer) {
+                interaction.defer(false);
+                interaction.reply = interaction.editReply;
+            }
+
             const convertedOptions = {};
             for (const option of interaction.options) {
                 convertedOptions[option.name] = option;
