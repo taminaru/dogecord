@@ -25,6 +25,8 @@ If you have any questions join our support server [here](https://discord.com/inv
 
 **Better docs coming soon!**
 
+<img src="https://tokei.rs/b1/github/taminaru/dogecord?category=lines"></img>
+
 ## Features
 
 #### Completely modular commands, inhibitors, and listeners.
