@@ -16,7 +16,7 @@
 
 # Important!
 
-DogeCord is my own reword of akario and custom things I want. 
+DogeCord is no longer being worked on by me, also Taminaru source code has been made private until further notice.
 
 This repo is an extention and insparation from [Discord Akairo](https://github.com/discord-akairo/discord-akairo). Please only use this fork if you wish for custom features.
 The fork is built to extention the usability of the [Taminaru Discord](https://github.com/taminaru) bot.
